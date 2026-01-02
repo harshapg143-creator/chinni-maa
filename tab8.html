@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>You 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+  background:linear-gradient(135deg,#ffafbd,#ffc3a0);
+  height:100vh;
+  margin:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family:cursive;
+  text-align:center;
+  overflow:hidden;
+}
+
+.container{
+  max-width:440px;
+  padding:20px;
+}
+
+/* 📸 Polaroid */
+.polaroid{
+  background:white;
+  padding:12px 12px 32px;
+  border-radius:14px;
+  box-shadow:0 20px 45px rgba(0,0,0,0.35);
+  display:inline-block;
+  margin-bottom:25px;
+  animation: reveal 2s ease forwards, heartbeat 3s infinite;
+}
+
+@keyframes reveal{
+  from{ opacity:0; filter:blur(12px); transform:scale(0.9); }
+  to{ opacity:1; filter:blur(0); transform:scale(1); }
+}
+
+@keyframes heartbeat{
+  0%{ transform:scale(1); }
+  25%{ transform:scale(1.05); }
+  40%{ transform:scale(1); }
+  60%{ transform:scale(1.08); }
+  100%{ transform:scale(1); }
+}
+
+.polaroid img{
+  width:160px;
+  max-width:65vw;
+  border-radius:8px;
+  display:block;
+  box-shadow:
+    0 0 20px rgba(255,105,135,.6),
+    0 0 45px rgba(255,160,160,.5);
+}
+
+.caption{
+  margin-top:8px;
+  font-size:14px;
+  color:#444;
+}
+
+h2{ margin:10px 0; }
+h1{ margin-top:20px; }
+p{ line-height:1.6; }
+
+/* 🎶 Music Button */
+.music-btn{
+  margin-top:20px;
+  padding:14px 30px;
+  border-radius:30px;
+  border:none;
+  background:#ff5e78;
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+  box-shadow:0 5px 15px rgba(0,0,0,.25);
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="polaroid">
+    <img src="image8.jpeg" alt="You">
+    <div class="caption">always you 💕</div>
+  </div>
+
+  <h2><b>So yeah…</b></h2>
+
+  <p>
+    <b>This wasn’t a website.</b>
+    <br>
+    <b>It was just my thoughts,
+    organized into tabs.</b>
+  </p>
+
+  <h1><b>And every tab led to you 💖</b></h1>
+
+  <button class="music-btn" id="musicBtn">
+    <h2><b>Play music 🎶</h2></b>
+  </button>
+
+</div>
+
+<!-- 🎶 REAL AUDIO -->
+<audio id="bgMusic" loop preload="auto">
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const music = document.getElementById("bgMusic");
+const btn = document.getElementById("musicBtn");
+let playing = false;
+
+/* Button toggle */
+btn.addEventListener("click", toggleMusic);
+
+function toggleMusic(){
+  if(!playing){
+    music.play().then(() => {
+      btn.innerText = "Pause music ⏸️";
+      playing = true;
+    }).catch(()=>{});
+  } else {
+    music.pause();
+    btn.innerText = "Play music 🎶";
+    playing = false;
+  }
+}
+
+/* 🔓 Mobile unlock: tap anywhere */
+document.body.addEventListener("click", () => {
+  if(!playing){
+    music.play().then(() => {
+      btn.innerText = "Pause music ⏸️";
+      playing = true;
+    }).catch(()=>{});
+  }
+}, { once:true });
+</script>
+
+</body>
+</html>

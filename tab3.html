@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Just Saying…</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+  background:linear-gradient(135deg,#fde68a,#fca5a5);
+  height:100vh;
+  margin:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family:cursive;
+  text-align:center;
+  overflow:hidden;
+}
+
+/* 🌸 Floating petals */
+.petal{
+  position:fixed;
+  top:-20px;
+  font-size:20px;
+  opacity:0.8;
+  animation: fall 9s linear infinite;
+}
+.petal:nth-child(1){ left:10%; animation-delay:0s; }
+.petal:nth-child(2){ left:30%; animation-delay:2s; }
+.petal:nth-child(3){ left:55%; animation-delay:4s; }
+.petal:nth-child(4){ left:75%; animation-delay:6s; }
+
+@keyframes fall{
+  0%{ transform:translateY(0) rotate(0deg); opacity:0; }
+  20%{ opacity:0.9; }
+  100%{ transform:translateY(110vh) rotate(360deg); opacity:0; }
+}
+
+.container{
+  max-width:420px;
+  padding:20px;
+  z-index:2;
+}
+
+/* 📸 Polaroid frame */
+.polaroid{
+  background:white;
+  padding:12px 12px 32px;
+  border-radius:10px;
+  box-shadow:0 15px 40px rgba(0,0,0,0.35);
+  display:inline-block;
+  margin-bottom:25px;
+
+  /* 🌫️ reveal + 💓 heartbeat */
+  animation:
+    reveal 2s ease forwards,
+    heartbeat 3s ease-in-out infinite;
+}
+
+/* 🌫️ Blur → clear */
+@keyframes reveal{
+  from{
+    filter:blur(12px);
+    opacity:0;
+    transform:scale(0.9);
+  }
+  to{
+    filter:blur(0);
+    opacity:1;
+    transform:scale(1);
+  }
+}
+
+/* 💓 Heartbeat */
+@keyframes heartbeat{
+  0%{ transform:scale(1); }
+  25%{ transform:scale(1.05); }
+  40%{ transform:scale(1); }
+  60%{ transform:scale(1.08); }
+  100%{ transform:scale(1); }
+}
+
+/* ✨ Image + glow */
+.polaroid img{
+  width:160px;
+  max-width:65vw;
+  border-radius:6px;
+  display:block;
+
+  box-shadow:
+    0 0 20px rgba(124,58,237,0.6),
+    0 0 40px rgba(124,58,237,0.4);
+}
+
+.caption{
+  margin-top:8px;
+  font-size:14px;
+  color:#444;
+}
+
+/* Text & button */
+p{
+  line-height:1.6;
+}
+
+button{
+  margin-top:20px;
+  padding:14px 28px;
+  border-radius:30px;
+  border:none;
+  background:#7c3aed;
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+  box-shadow:0 6px 18px rgba(0,0,0,0.25);
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🌸 Petals -->
+<div class="petal">🌸</div>
+<div class="petal">🌸</div>
+<div class="petal">🌸</div>
+<div class="petal">🌸</div>
+
+<div class="container">
+
+  <!-- 📸 Polaroid Image -->
+  <div class="polaroid">
+    <img src="image3.jpeg" alt="Cute Image">
+    <div class="caption">just saying…</div>
+  </div>
+
+  <p><b>
+    You don’t even try, and yet you do this thing where
+    your presence feels calm and chaotic at the same time.
+    <br><br>
+    Like… I could be having the worst day,
+    and one thought of you just softens everything.
+  </p></b>
+
+  <button onclick="next()"><b><h2>That’s not fair 😌</h2></b></button>
+</div>
+
+<script>
+function next(){
+  window.open("tab4.html","_blank");
+}
+</script>
+
+</body>
+</html>

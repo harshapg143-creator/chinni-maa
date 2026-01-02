@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Almost There</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+  background:#fff7ed;
+  height:100vh;
+  margin:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family:cursive;
+  text-align:center;
+  overflow:hidden;
+  transition:opacity 2s ease;
+}
+
+.container{
+  padding:20px;
+  max-width:420px;
+}
+
+/* 📸 Polaroid */
+.polaroid{
+  background:white;
+  padding:12px 12px 30px;
+  border-radius:12px;
+  box-shadow:0 18px 45px rgba(0,0,0,0.3);
+  display:inline-block;
+  margin-bottom:25px;
+
+  animation:
+    reveal 2s ease forwards,
+    heartbeat 3s ease-in-out infinite;
+}
+
+/* 🌫️ Blur → clear */
+@keyframes reveal{
+  from{
+    filter:blur(14px);
+    opacity:0;
+    transform:scale(0.9);
+  }
+  to{
+    filter:blur(0);
+    opacity:1;
+    transform:scale(1);
+  }
+}
+
+/* 💓 Heartbeat */
+@keyframes heartbeat{
+  0%{ transform:scale(1); }
+  25%{ transform:scale(1.05); }
+  40%{ transform:scale(1); }
+  60%{ transform:scale(1.08); }
+  100%{ transform:scale(1); }
+}
+
+/* ✨ Image glow */
+.polaroid img{
+  width:160px;
+  max-width:65vw;
+  border-radius:6px;
+  display:block;
+  box-shadow:
+    0 0 20px rgba(249,115,22,0.6),
+    0 0 45px rgba(249,115,22,0.4);
+}
+
+.caption{
+  margin-top:8px;
+  font-size:14px;
+  color:#444;
+}
+
+/* Text & button */
+p{
+  line-height:1.6;
+}
+
+button{
+  padding:14px 26px;
+  border-radius:25px;
+  border:none;
+  background:#f97316;
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+  margin-top:20px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.25);
+}
+
+/* 🎬 Fade overlay */
+.fade{
+  position:fixed;
+  inset:0;
+  background:black;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity 2s ease;
+  z-index:5;
+}
+</style>
+</head>
+
+<body>
+
+<div class="fade" id="fade"></div>
+
+<div class="container">
+
+  <div class="polaroid">
+    <img src="image7.jpeg" alt="Cute Image">
+    <div class="caption">almost there 🧡</div>
+  </div>
+
+  <p>
+    <b>I’m not saying anything.</b>
+    <br>
+    <b>I’m just letting you notice.</b>
+    <br><br>
+    <b>Because sometimes,
+    the unspoken things are the loudest.</b>
+  </p>
+
+  <button onclick="next()"><b><h2>Final? 😌</h2></b></button>
+</div>
+
+<script>
+function next(){
+  document.getElementById("fade").style.opacity = "1";
+  document.body.style.opacity = "0.4";
+
+  setTimeout(() => {
+    // ✅ Mobile-safe redirect
+    window.location.href = "tab8.html";
+  }, 2000);
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hmm… 🤔</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+/* 🌌 Base */
+body{
+  background:#0f172a;
+  color:#f8fafc;
+  height:100vh;
+  margin:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family:cursive;
+  text-align:center;
+  overflow:hidden;
+  transition: opacity 1.8s ease;
+}
+
+/* 🌌 Stars */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(1px 1px at 20% 30%, #fff, transparent),
+    radial-gradient(1px 1px at 70% 40%, #fff, transparent),
+    radial-gradient(1px 1px at 50% 80%, #fff, transparent),
+    radial-gradient(1px 1px at 90% 20%, #fff, transparent),
+    radial-gradient(1px 1px at 30% 60%, #fff, transparent);
+  animation: twinkle 6s infinite alternate;
+  opacity:.6;
+  z-index:-3;
+}
+
+@keyframes twinkle{
+  from{ opacity:.25; }
+  to{ opacity:.7; }
+}
+
+/* 🕯️ Candle flicker */
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:rgba(255,180,120,0.06);
+  animation: flicker 4s infinite;
+  pointer-events:none;
+  z-index:-2;
+}
+
+@keyframes flicker{
+  0%{ opacity:.05; }
+  50%{ opacity:.12; }
+  100%{ opacity:.06; }
+}
+
+.container{
+  max-width:420px;
+  padding:20px;
+}
+
+/* 🖤 Polaroid */
+.polaroid{
+  background:white;
+  padding:12px 12px 28px;
+  border-radius:10px;
+  box-shadow:0 15px 40px rgba(0,0,0,.45);
+  display:inline-block;
+  margin-bottom:25px;
+  animation: reveal 2s ease forwards, heartbeat 3s infinite;
+}
+
+@keyframes reveal{
+  from{
+    opacity:0;
+    filter:blur(10px);
+    transform:scale(.9);
+  }
+  to{
+    opacity:1;
+    filter:blur(0);
+    transform:scale(1);
+  }
+}
+
+@keyframes heartbeat{
+  0%{ transform:scale(1); }
+  25%{ transform:scale(1.05); }
+  40%{ transform:scale(1); }
+  60%{ transform:scale(1.08); }
+  100%{ transform:scale(1); }
+}
+
+.polaroid img{
+  width:150px;
+  max-width:65vw;
+  border-radius:6px;
+  display:block;
+  box-shadow:
+    0 0 20px rgba(251,113,133,.6),
+    0 0 40px rgba(251,113,133,.4);
+}
+
+.caption{
+  font-size:14px;
+  color:#0f172a;
+  margin-top:8px;
+}
+
+/* 💖 Hearts */
+.heart{
+  position:absolute;
+  font-size:18px;
+  color:#fb7185;
+  animation: floatUp 6s infinite ease-in-out;
+  opacity:.8;
+}
+
+.heart:nth-child(1){ left:-10px; top:40px; animation-delay:0s; }
+.heart:nth-child(2){ right:-10px; top:70px; animation-delay:1.5s; }
+.heart:nth-child(3){ left:20px; bottom:20px; animation-delay:3s; }
+
+@keyframes floatUp{
+  0%{ transform:translateY(0) scale(.9); opacity:0; }
+  30%{ opacity:.8; }
+  100%{ transform:translateY(-60px) scale(1.2); opacity:0; }
+}
+
+/* Text & button */
+p{ line-height:1.6; }
+
+button{
+  margin-top:25px;
+  padding:12px 28px;
+  border-radius:25px;
+  border:none;
+  background:#fb7185;
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+  box-shadow:0 6px 18px rgba(0,0,0,.3);
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="polaroid">
+    <span class="heart">💖</span>
+    <span class="heart">💕</span>
+    <span class="heart">💗</span>
+
+    <img src="image1.jpeg" alt="Cute">
+    <div class="caption">just a feeling…</div>
+  </div>
+
+  <p><b>
+    Do you ever realize how some people enter your life quietly,
+    without noise, without effort… and suddenly they occupy a
+    permanent space in your thoughts?
+    <br><br>
+    Yeah. That thought scared me a little.
+  </b></p>
+
+  <button onclick="next()"><h2><b></b>Why scared? 😳</h2></b></button>
+
+</div>
+
+<script>
+function next(){
+  document.body.style.opacity = "0";
+
+  setTimeout(() => {
+    // ✅ Mobile-safe navigation
+    window.location.href = "tab3.html";
+  }, 1800);
+}
+</script>
+
+</body>
+</html>
